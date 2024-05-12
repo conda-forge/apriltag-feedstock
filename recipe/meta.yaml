@@ -1,5 +1,5 @@
 {% set name = "apriltag" %}
-{% set version = "3.4.0" %}
+{% set version = "3.4.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,15 +7,16 @@ package:
 
 source:
   url: https://github.com/AprilRobotics/apriltag/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: eef3ab9283c4d8a92a06b40e468ae98726f5d485b888309babefb8092a2e544e
+  sha256: f17ecf3f8f4949c265fc2c400673cff072ad567b099822288a5f99ff3b62d7e5
 
 build:
-  number: 1
+  number: 0
   run_exports:
     - {{ pin_subpackage('apriltag', max_pin='x.x.x') }}
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - cmake
     - pkg-config
     - ninja
