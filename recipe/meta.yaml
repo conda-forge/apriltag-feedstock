@@ -1,5 +1,5 @@
 {% set name = "apriltag" %}
-{% set version = "3.4.1" %}
+{% set version = "3.4.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/AprilRobotics/apriltag/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: f17ecf3f8f4949c265fc2c400673cff072ad567b099822288a5f99ff3b62d7e5
+  sha256: 7e021bab89f136aa3cf736f772a635aaa353f93f6f8859495f4bd8c519be4805
 
 build:
   number: 2
