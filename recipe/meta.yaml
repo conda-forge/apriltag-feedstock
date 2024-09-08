@@ -10,7 +10,7 @@ source:
   sha256: 7e021bab89f136aa3cf736f772a635aaa353f93f6f8859495f4bd8c519be4805
 
 build:
-  number: 2
+  number: 3
   run_exports:
     - {{ pin_subpackage('apriltag', max_pin='x.x.x') }}
 requirements:
