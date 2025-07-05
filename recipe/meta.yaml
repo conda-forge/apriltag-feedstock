@@ -42,9 +42,9 @@ test:
     - cmake -G Ninja -B build_test
     - cmake --build build_test
     - pip check
+    - python -c "from apriltag import apriltag"  # [linux && build_platform == target_platform]
   imports:
     - apriltag
-    - apriltag.apriltag
 about:
   home: https://github.com/AprilRobotics/apriltag
   summary: 'AprilTag is a visual fiducial system popular for robotics research.'
