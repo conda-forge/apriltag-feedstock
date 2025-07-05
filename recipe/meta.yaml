@@ -12,7 +12,7 @@ source:
     - 377.patch
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('apriltag', max_pin='x.x.x') }}
 requirements:
