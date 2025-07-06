@@ -44,8 +44,8 @@ test:
     - cmake --build build_test
     - pip check
     - python -c "from apriltag import apriltag"  # [linux]
-  imports:
-    - apriltag
+  imports:  # [linux]
+    - apriltag  # [linux]
 about:
   home: https://github.com/AprilRobotics/apriltag
   summary: 'AprilTag is a visual fiducial system popular for robotics research.'
