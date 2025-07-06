@@ -11,7 +11,7 @@ CMAKE_ARGS="${CMAKE_ARGS} -DPython3_NumPy_INCLUDE_DIR=${Python_NumPy_INCLUDE_DIR
 # if cross-compiling, hardcode the SOABI to help CMake
 # see https://github.com/conda-forge/htcondor-feedstock/pull/213/commits/c740e27124aa91a36e6a10e6f411d345582440ac
 if [ "${build_platform}" != "${target_platform}" ]; then
-  Python_SOABI="$(python -c 'import sysconfig; print(sysconfig.get_config_var("EXT_SUFFIX"))')"
+  Python_SOABI="$(python -c 'import sysconfig; print(sysconfig.get_config_var("SOABI"))')"
   CMAKE_ARGS="${CMAKE_ARGS} -DPython3_SOABI:STRING=${Python_SOABI}"
 fi
 
