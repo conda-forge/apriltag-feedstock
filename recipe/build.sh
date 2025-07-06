@@ -8,9 +8,10 @@ CMAKE_ARGS="${CMAKE_ARGS} -DPython3_EXECUTABLE:PATH=${PYTHON}"
 CMAKE_ARGS="${CMAKE_ARGS} -DPython3_INCLUDE_DIR:PATH=${Python_INCLUDE_DIR}"
 CMAKE_ARGS="${CMAKE_ARGS} -DPython3_NumPy_INCLUDE_DIR=${Python_NumPy_INCLUDE_DIR}"
 
+# CMAKE_REQUIRE_FIND_PACKAGE_Python3 is used to early fail at CMake configuration if Python3 can't be found,
+# see https://cmake.org/cmake/help/latest/variable/CMAKE_REQUIRE_FIND_PACKAGE_PackageName.html
 cmake -G Ninja -B build \
     ${CMAKE_ARGS} \
-    # Early fail at CMake configuration if Python3 can't be found, see https://cmake.org/cmake/help/latest/variable/CMAKE_REQUIRE_FIND_PACKAGE_PackageName.html
     -D CMAKE_REQUIRE_FIND_PACKAGE_Python3=ON \
     -D BUILD_SHARED_LIBS=ON \
     -D BUILD_PYTHON_WRAPPER=ON \
