@@ -8,8 +8,6 @@ package:
 source:
   url: https://github.com/AprilRobotics/apriltag/archive/refs/tags/v{{ version }}.tar.gz
   sha256: a5f890a1406469fde4dabf92042072cac68b38db9b4aaf78316aca7c5fc2c9d8
-  patches:
-    - 377.patch
 
 build:
   number: 1
