@@ -1,0 +1,25 @@
+From 31eea27a8379e47e5cfffae53c6ebc690e2d7db8 Mon Sep 17 00:00:00 2001
+From: Silvio Traversaro <silvio@traversaro.it>
+Date: Fri, 22 Aug 2025 09:24:22 +0200
+Subject: [PATCH] Modify PY_DEST for conda-specific installation
+
+---
+ CMakeLists.txt | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 02ddaeeb..07b9f76a 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -193,7 +193,10 @@ if(BUILD_PYTHON_WRAPPER AND Python3_Development_FOUND AND Python3_NumPy_FOUND)
+     target_link_libraries(${apriltag_py_target} PRIVATE apriltag Python3::NumPy)
+     target_include_directories(${apriltag_py_target} PRIVATE ${PROJECT_BINARY_DIR})
+ 
+-    set(PY_DEST ${CMAKE_INSTALL_PREFIX}/lib/python${Python3_VERSION_MAJOR}.${Python3_VERSION_MINOR}/site-packages/)
++    # This is a conda-build/rattler-build specific patch, that should only applied as part of a conda recipe,
++    # as SP_DIR is an environment variable defined in conda-build: https://docs.conda.io/projects/conda-build/en/stable/user-guide/environment-variables.html#environment-variables-set-during-the-build-process
++    # See https://github.com/AprilRobotics/apriltag/pull/394 for the related discussion
++    set(PY_DEST $ENV{SP_DIR})
+     install(TARGETS ${apriltag_py_target} LIBRARY DESTINATION ${PY_DEST})
+ elseif(BUILD_PYTHON_WRAPPER)
+     message(WARNING
