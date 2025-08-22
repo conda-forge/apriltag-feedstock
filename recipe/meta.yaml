@@ -8,9 +8,11 @@ package:
 source:
   url: https://github.com/AprilRobotics/apriltag/archive/refs/tags/v{{ version }}.tar.gz
   sha256: 26427e5c014a68b9c9dcafcd721e57b52bcae7d326ae03dd255675e54d495b53
+  patches:
+    - use_correct_windows_install_for_python.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('apriltag', max_pin='x.x.x') }}
 requirements:
@@ -32,13 +34,15 @@ test:
     - cmake
     - ninja
     - python
+    - pip
   files:
     - CMakeLists.txt
     - test.c
   commands:
     - cmake -G Ninja -B build_test
     - cmake --build build_test
-    - python -c "from apriltag import apriltag"  # [linux]
+    - python -c "from apriltag import apriltag"
+    - pip check
 
 about:
   home: https://github.com/AprilRobotics/apriltag
