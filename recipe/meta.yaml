@@ -1,5 +1,5 @@
 {% set name = "apriltag" %}
-{% set version = "3.4.4" %}
+{% set version = "3.4.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://github.com/AprilRobotics/apriltag/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 26427e5c014a68b9c9dcafcd721e57b52bcae7d326ae03dd255675e54d495b53
+  sha256: 3749f48220db78c29c375a373861f4e1f4138e5dbae3c298584e96cfcc556515
   patches:
     - use_correct_windows_install_for_python.patch  # [win]
 
 build:
-  number: 1
+  number: 0
   run_exports:
     - {{ pin_subpackage('apriltag', max_pin='x.x.x') }}
 requirements:
