@@ -12,7 +12,7 @@ source:
     - use_correct_windows_install_for_python.patch  # [win]
 
 build:
-  number: 0
+  number: 1
   run_exports:
     - {{ pin_subpackage('apriltag', max_pin='x.x.x') }}
 requirements:
