@@ -11,9 +11,9 @@ cmake -G Ninja -B build \
     -D BUILD_PYTHON_WRAPPER=ON \
     -D BUILD_TESTING=ON \
     -D CMAKE_REQUIRE_FIND_PACKAGE_Python3:BOOL=ON \
-    -D Python3_EXECUTABLE:PATH=${PYTHON}" \
-    -D Python3_INCLUDE_DIR:PATH=${Python3_INCLUDE_DIR}" \
-    -D Python3_NumPy_INCLUDE_DIR=${Python3_NumPy_INCLUDE_DIR}"
+    -D Python3_EXECUTABLE:PATH=${PYTHON} \
+    -D Python3_INCLUDE_DIR:PATH=${Python3_INCLUDE_DIR} \
+    -D Python3_NumPy_INCLUDE_DIR=${Python3_NumPy_INCLUDE_DIR}
 cmake --build build --target install
 
 ctest --no-tests=error --output-on-failure --verbose --test-dir build/test/
