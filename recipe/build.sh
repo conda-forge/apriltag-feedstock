@@ -8,7 +8,7 @@ Python3_NumPy_INCLUDE_DIR="$(python -c 'import numpy;print(numpy.get_include())'
 # if cross-compiling, hardcode the SOABI to help CMake
 if [ "${build_platform}" != "${target_platform}" ]; then
   PYTHON_EXTENSION_SUFFIX=$(${PYTHON}${PY_VER}-config --extension-suffix | cut -d. -f2)
-  CMAKE_ARGS="${CMAKE_ARGS} -DPython3_SOABI:STRING=${PYTHON_EXTENSION_SUFFIX}"
+  CMAKE_ARGS="${CMAKE_ARGS} -APRILTAG_SOABI:STRING=${PYTHON_EXTENSION_SUFFIX}"
 fi
 
 cmake -G Ninja -B build \
