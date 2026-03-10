@@ -22,4 +22,6 @@ cmake -G Ninja -B build \
     -D Python3_NumPy_INCLUDE_DIR=${Python3_NumPy_INCLUDE_DIR}
 cmake --build build --target install
 
-ctest --no-tests=error --output-on-failure --verbose --test-dir build/test/
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-0}" != "1" ]]; then
+    ctest --no-tests=error --output-on-failure --verbose --test-dir build/test/
+fi
