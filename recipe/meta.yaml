@@ -10,6 +10,7 @@ source:
   sha256: 3749f48220db78c29c375a373861f4e1f4138e5dbae3c298584e96cfcc556515
   patches:
     - use_correct_windows_install_for_python.patch  # [win]
+    - use_fixed_soabi.patch                         # [build_platform != target_platform]
 
 build:
   number: 2
