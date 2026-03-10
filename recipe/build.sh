@@ -5,6 +5,12 @@ set -ex
 Python3_INCLUDE_DIR="$(python -c 'import sysconfig; print(sysconfig.get_path("include"))')"
 Python3_NumPy_INCLUDE_DIR="$(python -c 'import numpy;print(numpy.get_include())')"
 
+# if cross-compiling, hardcode the SOABI to help CMake
+if [ "${build_platform}" != "${target_platform}" ]; then
+  PYTHON_EXTENSION_SUFFIX=$(${PYTHON}${PY_VER}-config --extension-suffix | cut -d. -f2)
+  CMAKE_ARGS="${CMAKE_ARGS} -DPython3_SOABI:STRING=${PYTHON_EXTENSION_SUFFIX}"
+fi
+
 cmake -G Ninja -B build \
     ${CMAKE_ARGS} \
     -D BUILD_SHARED_LIBS=ON \
